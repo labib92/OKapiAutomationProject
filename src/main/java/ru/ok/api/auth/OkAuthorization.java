@@ -9,7 +9,7 @@ import static io.restassured.RestAssured.given;
 
 public class OkAuthorization {
 
-    public static void getAccessToken(String authCode){
+    public static Response getAccessToken(String authCode){
         Map<String ,String> formParameters = new HashMap<String, String>();
         formParameters.put("code", authCode);
         formParameters.put("client_id", OkApiConfig.APPLICATION_ID);
@@ -18,13 +18,15 @@ public class OkAuthorization {
         formParameters.put("grant_type", "authorization_code");
 
         Response response = given()
-                .baseUri(OkApiConfig.BASE_URI)
+                .baseUri(OkApiConfig.TOKEN_URI)
                 .formParams(formParameters)
                 .when()
                 .post("/oauth/token.do");
 
         OkApiConfig.ACCESS_TOKEN = response.jsonPath().getString("access_token");
         OkApiConfig.REFRESH_TOKEN = response.jsonPath().getString("refresh_token");
+
+        return response;
     }
 
     public static String getAuthorizationUrl(){

@@ -4,12 +4,13 @@ import org.junit.jupiter.api.BeforeAll;
 import ru.ok.api.auth.OkAuthorization;
 
 public class BaseTest {
-
+    // Replace with the code you get from the redirect URL
+    protected static String authCode = "Read PrintAccessUrlToken class";
     @BeforeAll
-    public static void setup(){
-        System.out.println("Visit this URL to authorize and get the code: ");
-        System.out.println(OkAuthorization.getAuthorizationUrl());
-        System.out.println("\nAfter authorization, paste the code parameter from the redirect URL below");
+    public static void setupClass(){
+        System.out.println("Exchanging code 'authCode' for token.");
+        OkAuthorization.getAccessToken(authCode);
+        System.out.println("\nToken successfully received");
     }
 
 }
