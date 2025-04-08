@@ -38,12 +38,32 @@ public class GroupApiService {
         Map<String, String> queryParameters = new HashMap<String, String>();
         queryParameters.put("application_key", OkApiConfig.APPLICATION_KEY);
         queryParameters.put("format", OkApiConfig.FORMAT);
-        queryParameters.put("method",OkApiConfig.METHOD);
+        queryParameters.put("method",OkApiConfig.METHOD_GET_USER_GROUP_V2);
         queryParameters.put("access_token", OkApiConfig.ACCESS_TOKEN);
 
         //add signature
         String sig = generateSignature(queryParameters);
         System.out.println("sig = "+sig);
+        queryParameters.put("sig", sig);
+
+        return given()
+                .baseUri(OkApiConfig.TOKEN_URI+"/fb.do")
+                .queryParams(queryParameters)
+                .when()
+                .get();
+    }
+
+    public Response getCounters(){
+        Map<String, String> queryParameters = new HashMap<String, String>();
+        queryParameters.put("method", OkApiConfig.METHOD_GET_COUNTERS);
+        queryParameters.put("access_token", OkApiConfig.ACCESS_TOKEN);
+        queryParameters.put("application_key", OkApiConfig.APPLICATION_KEY);
+        queryParameters.put("format", OkApiConfig.FORMAT);
+        queryParameters.put("group_id", OkApiConfig.GROUP_ID);
+        queryParameters.put("counterTypes",OkApiConfig.COUNTER_TYPES);
+
+        //add signature
+        String sig = generateSignature(queryParameters);
         queryParameters.put("sig", sig);
 
         return given()

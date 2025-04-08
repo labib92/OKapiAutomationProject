@@ -8,7 +8,6 @@ import ru.ok.api.auth.OkAuthorization;
 
 public class AuthenticationTest extends BaseTest{
 
-
     @Test
     public void testAccessToken(){
         Response response = OkAuthorization.getAccessToken(authCode);
