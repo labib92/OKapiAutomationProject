@@ -11,8 +11,9 @@ public class OkApiConfig {
 
     public static final String METHOD_GET_USER_GROUP_V2 = "group.getUserGroupsV2";
     public static final String METHOD_GET_COUNTERS = "group.getCounters";
-    public static final String FORMAT = "json";
+    public static final String METHOD_EDIT_PHOTO = "photos.editPhoto";
     public static final String COUNTER_TYPES = "PHOTOS,PHOTO_ALBUMS,VIDEOS";
+    public static final String FORMAT = "json";
 
     public static String ACCESS_TOKEN;
     public static String REFRESH_TOKEN;

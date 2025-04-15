@@ -8,7 +8,6 @@ import ru.ok.api.group.GroupApiService;
 
 public class GetCountersTest extends BaseTest{
 
-
     @Test
     public void testGetCountersSuccess(){
         groupApiService = new GroupApiService();
@@ -17,10 +16,9 @@ public class GetCountersTest extends BaseTest{
         OkApiConfig.GROUP_ID = response.jsonPath().getString("groups[0].groupId");
         OkApiConfig.USER_ID = response.jsonPath().getString("groups[0].userId");
         OkApiConfig.STATUS = response.jsonPath().getString("groups[0].status");
-        response = groupApiService.getCounters();
-
         System.out.println("group_id = "+ OkApiConfig.GROUP_ID);
 
+        response = groupApiService.getCounters();
         System.out.println("Response:");
         response.prettyPrint();
 

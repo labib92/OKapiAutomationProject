@@ -9,7 +9,6 @@ import ru.ok.api.group.GroupApiService;
 
 public class GetUserGroupsV2Test extends BaseTest{
 
-
     @Test
     public void testGetUserGroupsV2Success(){
         groupApiService = new GroupApiService();

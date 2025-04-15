@@ -72,4 +72,23 @@ public class GroupApiService {
                 .when()
                 .get();
     }
+
+    public Response editPhoto(){
+        Map<String, String> queryParameters = new HashMap<String, String>();
+        queryParameters.put("application_key",OkApiConfig.APPLICATION_KEY);
+        queryParameters.put("description", "Updated via automation");
+        queryParameters.put("format", OkApiConfig.FORMAT);
+        queryParameters.put("method", OkApiConfig.METHOD_EDIT_PHOTO);
+        queryParameters.put("photo_id", "222");
+        queryParameters.put("access_token", OkApiConfig.ACCESS_TOKEN);
+
+        String sig = generateSignature(queryParameters);
+        queryParameters.put("sig", sig);
+
+        return given()
+                .baseUri(OkApiConfig.TOKEN_URI+"/fb.do")
+                .queryParams(queryParameters)
+                .when()
+                .get();
+    }
 }
